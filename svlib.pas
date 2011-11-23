@@ -1,7 +1,7 @@
 //**************************************
-// SVLIB - НАБОР ФУНКЦИЙ ДЛЯ SOLARIS V6
+// SVLIB - РќРђР‘РћР  Р¤РЈРќРљР¦РР™ Р”Р›РЇ SOLARIS V6
 // Vladimir T. Sabitov
-// ВЕРСИЯ 2011.10.05
+// Р’Р•Р РЎРРЇ 2011.10.05
 //**************************************
 function svlib_ScanBadSeries(storage:integer):string;
 	var
@@ -12,7 +12,7 @@ function svlib_ScanBadSeries(storage:integer):string;
 		info:=ScanBadSeries_full(true, storage);
 		t2:=now;
 		t3:=t2-t1;
-		Result:='Время начала сканирования: '+timetostr(t1)+#13+'Время окончания сканирования: '+timetostr(t2)+#13+'Время, затраченное на сканирование: '+timetostr(t3)+#13#13+info;
+		Result:='Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р° СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ: '+timetostr(t1)+#13+'Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ: '+timetostr(t2)+#13+'Р’СЂРµРјСЏ, Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РЅР° СЃРєР°РЅРёСЂРѕРІР°РЅРёРµ: '+timetostr(t3)+#13#13+info;
 	end;
 
 procedure svlib_pScanBadSeries(storage:integer);
@@ -24,22 +24,22 @@ procedure svlib_pScanBadSeries(storage:integer);
 		info:=ScanBadSeries_full(true, storage);
 		t2:=now;
 		t3:=t2-t1;
-		CreateHintI('Время начала сканирования: '+timetostr(t1)+#13+'Время окончания сканирования: '+timetostr(t2)+#13+'Время, затраченное на сканирование: '+timetostr(t3)+#13#13+info,'svlib_pScanBadSeries');
+		CreateHintI('Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р° СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ: '+timetostr(t1)+#13+'Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ: '+timetostr(t2)+#13+'Р’СЂРµРјСЏ, Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РЅР° СЃРєР°РЅРёСЂРѕРІР°РЅРёРµ: '+timetostr(t3)+#13#13+info,'svlib_pScanBadSeries');
 	end;
 
 function svlib_SendMail(Recipient:string; Subject:string; Body:string):string;
 
 	var
-		Agents : Variant;	// Используется для отправки писем через MailProcessor
-		MailMessage : Variant;	// Используется для отправки писем через MailProcessor
+		Agents : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
+		MailMessage : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
 
 	begin
 		Agents := CreateOleObject('mailprocessor.addressbook');
 		MailMessage := CreateOleObject('mailprocessor.mpmailmessage');
-		Agents.SRV.ConnectWP('Пользователь','1');
+		Agents.SRV.ConnectWP('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ','1');
 		if not Agents.srv.connected	then
 			begin
-				Result:='Не могу присоединиться а MailProcessor.';
+				Result:='РќРµ РјРѕРіСѓ РїСЂРёСЃРѕРµРґРёРЅРёС‚СЊСЃСЏ Р° MailProcessor.';
 				exit;
 			end;
 		MailMessage.ID := 0;
@@ -47,22 +47,22 @@ function svlib_SendMail(Recipient:string; Subject:string; Body:string):string;
 		MailMessage.Subject := Subject;
 		MailMessage.Body := Body;
 		MailMessage.Save;
-		Result:='Сообщение сохранено в MailProcessor';
+		Result:='РЎРѕРѕР±С‰РµРЅРёРµ СЃРѕС…СЂР°РЅРµРЅРѕ РІ MailProcessor';
 	end;	
 
 procedure svlib_pSendMail(Recipient:string; Subject:string; Body:string);
 
 	var
-		Agents : Variant;	// Используется для отправки писем через MailProcessor
-		MailMessage : Variant;	// Используется для отправки писем через MailProcessor
+		Agents : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
+		MailMessage : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
 
 	begin
 		Agents := CreateOleObject('mailprocessor.addressbook');
 		MailMessage := CreateOleObject('mailprocessor.mpmailmessage');
-		Agents.SRV.ConnectWP('Пользователь','1');
+		Agents.SRV.ConnectWP('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ','1');
 		if not Agents.srv.connected	then
 			begin
-				CreateHintE('Не могу присоединиться к MailProcessor','svlib_pSendMail');
+				CreateHintE('РќРµ РјРѕРіСѓ РїСЂРёСЃРѕРµРґРёРЅРёС‚СЊСЃСЏ Рє MailProcessor','svlib_pSendMail');
 				exit;
 			end;
 		MailMessage.ID := 0;
@@ -70,22 +70,22 @@ procedure svlib_pSendMail(Recipient:string; Subject:string; Body:string);
 		MailMessage.Subject := Subject;
 		MailMessage.Body := Body;
 		MailMessage.Save;
-		CreateHintI('Сообщение сохранено в MailProcessor','svlib_pSendMail');
+		CreateHintI('РЎРѕРѕР±С‰РµРЅРёРµ СЃРѕС…СЂР°РЅРµРЅРѕ РІ MailProcessor','svlib_pSendMail');
 	end;	
 	
 function svlib_SendMailATT(Recipient:string; Subject:string; Body:string; Attachment:string):string;
 
 	var
-		Agents : Variant;	// Используется для отправки писем через MailProcessor
-		MailMessage : Variant;	// Используется для отправки писем через MailProcessor
+		Agents : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
+		MailMessage : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
 
 	begin
 		Agents := CreateOleObject('mailprocessor.addressbook');
 		MailMessage := CreateOleObject('mailprocessor.mpmailmessage');
-		Agents.SRV.ConnectWP('Пользователь','1');
+		Agents.SRV.ConnectWP('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ','1');
 		if not Agents.srv.connected	then
 			begin
-				Result:='Не могу присоединиться к MailProcessor.';
+				Result:='РќРµ РјРѕРіСѓ РїСЂРёСЃРѕРµРґРёРЅРёС‚СЊСЃСЏ Рє MailProcessor.';
 				exit;
 			end;
 		MailMessage.ID := 0;
@@ -94,22 +94,22 @@ function svlib_SendMailATT(Recipient:string; Subject:string; Body:string; Attach
 		MailMessage.Body := Body;
 		MailMessage.AddAttachment(Attachment);
 		MailMessage.Save;
-		Result:='Сообщение сохранено в MailProcessor';
+		Result:='РЎРѕРѕР±С‰РµРЅРёРµ СЃРѕС…СЂР°РЅРµРЅРѕ РІ MailProcessor';
 	end;	
 
 procedure svlib_pSendMailATT(Recipient:string; Subject:string; Body:string; Attachment:string);
 
 	var
-		Agents : Variant;	// Используется для отправки писем через MailProcessor
-		MailMessage : Variant;	// Используется для отправки писем через MailProcessor
+		Agents : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
+		MailMessage : Variant;	// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј С‡РµСЂРµР· MailProcessor
 
 	begin
 		Agents := CreateOleObject('mailprocessor.addressbook');
 		MailMessage := CreateOleObject('mailprocessor.mpmailmessage');
-		Agents.SRV.ConnectWP('Пользователь','1');
+		Agents.SRV.ConnectWP('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ','1');
 		if not Agents.srv.connected	then
 			begin
-				CreateHintE('Не могу присоединиться к MailProcessor','svlib_pSendMail');
+				CreateHintE('РќРµ РјРѕРіСѓ РїСЂРёСЃРѕРµРґРёРЅРёС‚СЊСЃСЏ Рє MailProcessor','svlib_pSendMail');
 				exit;
 			end;
 		MailMessage.ID := 0;
@@ -118,10 +118,10 @@ procedure svlib_pSendMailATT(Recipient:string; Subject:string; Body:string; Atta
 		MailMessage.Body := Body;
 		MailMessage.AddAttachment(Attachment);
 		MailMessage.Save;
-		CreateHintI('Сообщение сохранено в MailProcessor','svlib_pSendMail');
+		CreateHintI('РЎРѕРѕР±С‰РµРЅРёРµ СЃРѕС…СЂР°РЅРµРЅРѕ РІ MailProcessor','svlib_pSendMail');
 	end;	
 
-function svlib_QueryToFile(Sql:string; QueryFile:string; Format:TDataPacketFormat = dfBinary):string; // Функция сохраняет результат SQL запроса в файл. 	
+function svlib_QueryToFile(Sql:string; QueryFile:string; Format:TDataPacketFormat = dfBinary):string; // Р¤СѓРЅРєС†РёСЏ СЃРѕС…СЂР°РЅСЏРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ SQL Р·Р°РїСЂРѕСЃР° РІ С„Р°Р№Р». 	
 // Format: dfBinary,dfXML,dfXMLUTF8
 	var
 		Query : TQuery;
@@ -136,7 +136,7 @@ function svlib_QueryToFile(Sql:string; QueryFile:string; Format:TDataPacketForma
 	
 	begin
 		T1:=now;
-		InfoStart:='Функция сохранения SQL запроса в файл';
+		InfoStart:='Р¤СѓРЅРєС†РёСЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ SQL Р·Р°РїСЂРѕСЃР° РІ С„Р°Р№Р»';
 		Query := TQuery.create(nil);
 		Query.Sql.Text := Sql;
 		Query.Databasename := 'dbkassa';
@@ -151,24 +151,24 @@ function svlib_QueryToFile(Sql:string; QueryFile:string; Format:TDataPacketForma
 
 		Stream := TMemoryStream.create;
 
-		CDS.SaveToFile(QueryFile,Format); // Сохраняем датасет в файл dfBinary,dfXML,dfXMLUTF8
-		InfoEnd:='Файл '+QueryFile+' успешно сохранен';
+		CDS.SaveToFile(QueryFile,Format); // РЎРѕС…СЂР°РЅСЏРµРј РґР°С‚Р°СЃРµС‚ РІ С„Р°Р№Р» dfBinary,dfXML,dfXMLUTF8
+		InfoEnd:='Р¤Р°Р№Р» '+QueryFile+' СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅ';
 
 		Query.Free;
 		Stream.Free;
 		CDS.Free;
 		T2:=now;
 		T3:=T2-T1;
-		Result:=InfoStart+#13#13+'Время начала: '+TimeToStr(T1)+#13+'Время окончания: '+TimeToStr(T2)+#13+'Время, затраченное: '+TimeToStr(T3)+#13#13+InfoEnd;
+		Result:=InfoStart+#13#13+'Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р°: '+TimeToStr(T1)+#13+'Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ: '+TimeToStr(T2)+#13+'Р’СЂРµРјСЏ, Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ: '+TimeToStr(T3)+#13#13+InfoEnd;
 	end;
 
 function svlib_GetDefaultStorage:Integer;
 	begin
-		Result := appinifile.readinteger('common','currentsklad',0); // Получаем номер склада по умолчанию
+		Result := appinifile.readinteger('common','currentsklad',0); // РџРѕР»СѓС‡Р°РµРј РЅРѕРјРµСЂ СЃРєР»Р°РґР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	end;
 
 procedure svlib_pLogFile(LogFile:String; LogText:String);	
-// Процедура записи в логфайл
+// РџСЂРѕС†РµРґСѓСЂР° Р·Р°РїРёСЃРё РІ Р»РѕРіС„Р°Р№Р»
 	var
 		LogF:TLogFile;
 
@@ -184,5 +184,5 @@ procedure svlib_pLogFile(LogFile:String; LogText:String);
 
 	
 begin
-	// заглушка CreateHintI('Библиотека функций','svLib for Solaris',10);
+	// Р·Р°РіР»СѓС€РєР° CreateHintI('Р‘РёР±Р»РёРѕС‚РµРєР° С„СѓРЅРєС†РёР№','svLib for Solaris',10);
 end.
