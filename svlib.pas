@@ -3,7 +3,7 @@
 // Vladimir T. Sabitov
 // ВЕРСИЯ 2011.10.05
 //**************************************
-function svlib_ScanBadSeries(storage:integer):string;
+function svlib_ScanBadSeries(storage:integer):string; // Поиск забракованных серий
 	var
 		info: string;
 		t1,t2,t3: TDateTime;
@@ -162,7 +162,7 @@ function svlib_QueryToFile(Sql:string; QueryFile:string; Format:TDataPacketForma
 		Result:=InfoStart+#13#13+'Время начала: '+TimeToStr(T1)+#13+'Время окончания: '+TimeToStr(T2)+#13+'Время, затраченное: '+TimeToStr(T3)+#13#13+InfoEnd;
 	end;
 
-function svlib_GetDefaultStorage:Integer;
+function svlib_GetDefaultStorage:Integer; // Возвращает номер склада по умолчанию
 	begin
 		Result := appinifile.readinteger('common','currentsklad',0); // Получаем номер склада по умолчанию
 	end;

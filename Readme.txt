@@ -19,19 +19,28 @@ svlib_pSendMail(Recipient:string; Subject:string; Body:string):string;
 	Subject - Тема
 	Body - Тело сообщения
 
-function svlib_SendMailATT(Recipient:string; Subject:string; Body:string; Attachment:string):string;
+svlib_SendMailATT(Recipient:string; Subject:string; Body:string; Attachment:string):string;
 Функция отправляет сообщение через mailprocessor со вложением
 	Recipient - кому
 	Subject - Тема
 	Body - Тело сообщения
 	Attachment - Вложение
 
-procedure svlib_pSendMailATT(Recipient:string; Subject:string; Body:string; Attachment:string);
+svlib_pSendMailATT(Recipient:string; Subject:string; Body:string; Attachment:string);
 Процедура отправляет сообщение через mailprocessor со вложением
 	Recipient - кому
 	Subject - Тема
 	Body - Тело сообщения
 	Attachment - Вложение
 
+svlib_QueryToFile(Sql:string; QueryFile:string; Format:TDataPacketFormat = dfBinary):string;
+сохраняет результат SQL запроса в файл.
+	Sql - Текст запроса
+	QueryFile - Файл для сохранения результата
+	Format - Формат файла
 
-svlib_Logfile(имя файла, текст); - Процедура
+svlib_GetDefaultStorage:Integer;
+Функция возвращает номер склада по умолчанию.
+
+svlib_Logfile(имя файла, текст);
+Процедура сохраняет строку в файл ( используется для ведения логов )
